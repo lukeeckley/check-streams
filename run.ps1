@@ -90,8 +90,8 @@ While ($true)
 
     # Check the streams in Wowza
     try {
-        $secpasswd = ConvertTo-SecureString $password -AsPlainText -Force
-        $cred = New-Object System.Management.Automation.PSCredential ($BasicAuthUser,$BasicAuthPassword)
+        $secpasswd = ConvertTo-SecureString $BasicAuthPassword -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ($BasicAuthUser,$secpasswd)
 
         $webpage = Invoke-WebRequest -Uri $LiveStreamURL -Credential $cred
         $html = $webpage.ParsedHTML
